@@ -1,0 +1,87 @@
+<div class="container-fluid">
+    <div class="col-md-1"></div>
+    <div class="col-md-3">
+    <form ng-submit="addSecurity()" name="securityForm">
+      <div class="row">
+          <h3>Add security</h3>
+          Security name: <input class="form-control" type="text" ng-model="securityName"  id="secturityName">
+        </div>
+      <div class="row top-buffer">
+          <input class="btn btn-primary" type="submit" id="securityBtn" value="Add!">
+        </div>
+    </form>
+
+    <form ng-submit="addOrder()" name="orderForm">
+      <div class="row">
+          <h3>Add Order</h3>
+          Security: <input class="form-control" type="text" ng-model="order.name"  id="security">
+        </div>
+      <div class="row top-buffer">
+          Price: <input class="form-control" type="number" ng-model="order.price"  id="price">
+        </div>
+      <div class="row top-buffer">
+          Amount: <input class="form-control" type="number" ng-model="order.amount"  id="amount">
+        </div>
+      <div class="row top-buffer">
+          Type: <input class="form-control" type="text" ng-model="order.type"  id="type">
+        </div>
+      <div class="row top-buffer">
+          Uid: <input class="form-control" type="text" ng-model="order.uid"  id="uid">
+        </div>
+      <div class="row top-buffer">
+          <input class="btn btn-primary" type="submit" id="orderBtn" value="Add!">
+      </div>
+      <div class="row top-buffer">
+          <h3>Status:</h3>
+          {{status}}
+      </div>
+    </form>
+  </div>
+  <div class="col-md-1"></div>
+  <div class="col-md-4">
+    <select ng-model="selectedSecurity" ng-change="getTrades()">
+      <option ng-repeat="s in securities">{{s.name}}</option>
+    </select>
+    <div class="container top-buffer">
+      <h3>Trade history:</h3>
+      <div class="row col-head">
+        <div class="col-md-1"> id </div>
+        <div class="col-md-1"> name </div>
+        <div class="col-md-1"> price </div>
+        <div class="col-md-1"> amount </div>
+        <div class="col-md-3"> date </div>
+        <div class="col-md-1"> buyer </div>
+        <div class="col-md-1"> seller </div>
+      </div>
+      <div class="row top-buffer" ng-repeat="value in trades">
+        <div class="col-md-1"> {{value.id}} </div>
+        <div class="col-md-1"> {{value.name}} </div>
+        <div class="col-md-1"> {{value.price}} </div>
+        <div class="col-md-1"> {{value.amount}} </div>
+        <div class="col-md-3"> {{value.dt}} </div>
+        <div class="col-md-1"> {{value.buyer}} </div>
+        <div class="col-md-1"> {{value.seller}} </div>
+      </div>
+    </div>
+    <div class="container top-buffer">
+      <h3>Active orders:</h3>
+      <div class="row col-head">
+        <div class="col-md-1"> id </div>
+        <div class="col-md-1"> name </div>
+        <div class="col-md-1"> price </div>
+        <div class="col-md-1"> amount </div>
+        <div class="col-md-1"> type </div>
+        <div class="col-md-1"> uid </div>
+
+      </div>
+      <div class="row top-buffer" ng-repeat="value in orders">
+        <div class="col-md-1"> {{value.id}} </div>
+        <div class="col-md-1"> {{value.name}} </div>
+        <div class="col-md-1"> {{value.price}} </div>
+        <div class="col-md-1"> {{value.amount}} </div>
+        <div class="col-md-1"> {{value.type}} </div>
+        <div class="col-md-1"> {{value.uid}} </div>
+      </div>
+    </div>
+  </div>
+</div>
